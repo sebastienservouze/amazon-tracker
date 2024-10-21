@@ -16,21 +16,53 @@ p {
     align-items: center;
 }
 
-input {
-    border: solid 1px colors.$color-surface-a30;
-    border-radius: .5rem;
-    padding: .5rem;
-    outline: none;
+.input__container {
+    display: flex;
+    position: relative;
 
-    background-color: colors.$color-surface-a20;
-    margin-bottom: 1rem;
+    &__spinner {
+        position: absolute;
+        right: .5rem;
+        top: calc(50% - 20px);
 
-    font-size: 1.25rem;
-    color: white;
-
-    transition: all .2s;
-
-    &:hover, &:focus {
-        border-color: colors.$color-primary-a30;
+        .spinner {
+            width: 20px;
+            height: 20px;
+        }
     }
+
+    input {
+        border: solid 1px colors.$color-surface-a30;
+        border-radius: .5rem;
+        padding: .5rem;
+        outline: none;
+
+        background-color: colors.$color-surface-a20;
+        caret-color: colors.$color-primary-a50;
+        margin-bottom: 1rem;
+
+        font-size: 1.25rem;
+        color: white;
+
+        transition: all .2s;
+        width: 100%;
+
+        &::placeholder {
+            font-family: "Outfit", sans-serif;
+            font-weight: 400;
+            color: colors.$color-surface-a40;
+        }
+
+        &:hover, &:focus {
+            border-color: colors.$color-primary-a30;
+        }
+    }
+}
+
+.discovery {
+
+    .price {
+        color: colors.$color-primary-a20;
+    }
+
 }

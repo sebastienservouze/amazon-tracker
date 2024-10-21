@@ -3,3 +3,9 @@
 </div>
 
 <app-add-tracker class="card"></app-add-tracker>
+
+<app-product-overview *ngIf="searchedProduct$ | async"
+                      [product]="searchedProduct$ | async"
+                      class="card">
+
+</app-product-overview>
