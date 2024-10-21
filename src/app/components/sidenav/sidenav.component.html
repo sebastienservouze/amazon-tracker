@@ -1,0 +1,28 @@
+<div class="header">
+    <span class="material-symbols-outlined">deployed_code</span>
+    <h1>AMAZON TRACKER</h1>
+</div>
+
+<nav>
+    <ul>
+        <li><a routerLink="dashboard" routerLinkActive="active">&nbsp;<span class="material-symbols-outlined">dashboard</span>Dashboard</a></li>
+
+        <hr>
+
+        <li><a routerLink="trackers" routerLinkActive="active">&nbsp;<span class="material-symbols-outlined">insert_chart</span>Trackers</a></li>
+
+        <div class="footer">
+            <hr>
+
+            <ng-container *ngIf="authService.user$ | async">
+                <li><a class="profile" routerLink="profile">&nbsp;<span class="material-symbols-outlined">account_circle</span>{{(authService.user$ | async)?.username}}</a></li>
+                <li><a class="logout" routerLink="settings">&nbsp;<span class="material-symbols-outlined">logout</span> Déconnexion</a></li>
+            </ng-container>
+
+            <ng-container *ngIf="!(authService.user$ | async)">
+                <li><a routerLink="login">&nbsp;<span class="material-symbols-outlined">account_circle</span>Connexion</a></li>
+            </ng-container>
+        </div>
+    </ul>
+
+</nav>

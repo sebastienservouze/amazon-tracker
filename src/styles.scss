@@ -1,12 +1,50 @@
-@use 'styles/_palette.scss';
+@use 'colors';
 
 html, body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    font-family: 'Outfit', sans-serif;
 }
 
 body {
-  background-color: palette.$color-surface-a0;
-  color: white;
+    background-color: colors.$color-surface-a0;
+    color: #EEE;
+}
+
+input {
+    font-family: 'Outfit', sans-serif;
+    font-weight: lighter;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    background-color: colors.$color-surface-a10;
+    border-radius: .5rem;
+    padding: 0 1rem;
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.5);
+}
+
+.emphasis {
+    color: colors.$color-primary-a50;
+}
+
+.title {
+    h2 {
+        display: flex;
+        align-items: center;
+        color: white;
+        margin-bottom: 0;
+        font-family: 'Outfit', sans-serif;
+
+        span {
+            margin-right: .5rem;
+            color: colors.$color-primary-a20;
+        }
+    }
+
+    hr {
+        border: none;
+        border-top: solid 2px colors.$color-surface-a20;
+    }
 }

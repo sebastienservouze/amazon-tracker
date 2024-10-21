@@ -1,0 +1,36 @@
+@use 'colors';
+
+h3 {
+    display: flex;
+    gap: .5rem;
+    margin-bottom: 0;
+
+    span {
+        color: colors.$color-primary-a20;
+        font-size: 1.5rem;
+    }
+}
+
+p {
+    display: flex;
+    align-items: center;
+}
+
+input {
+    border: solid 1px colors.$color-surface-a30;
+    border-radius: .5rem;
+    padding: .5rem;
+    outline: none;
+
+    background-color: colors.$color-surface-a20;
+    margin-bottom: 1rem;
+
+    font-size: 1.25rem;
+    color: white;
+
+    transition: all .2s;
+
+    &:hover, &:focus {
+        border-color: colors.$color-primary-a30;
+    }
+}
