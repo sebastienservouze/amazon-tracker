@@ -9,7 +9,7 @@ import {Mocks} from "../Mocks";
 })
 export class TrackerService {
 
-    private discoveries$: BehaviorSubject<ProductDiscovery[]> = new BehaviorSubject<ProductDiscovery[]>(Mocks.discoveries);
+    private discoveries$: BehaviorSubject<ProductDiscovery[]> = new BehaviorSubject<ProductDiscovery[]>([]);
     get discoveries(): Observable<ProductDiscovery[]> {
         return this.discoveries$.asObservable();
     }
