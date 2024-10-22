@@ -84,6 +84,8 @@ button {
     background-color: colors.$color-surface-a20;
     color: colors.$color-surface-a50;
 
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.5);
+
     &:not(:disabled) {
         cursor: pointer;
 

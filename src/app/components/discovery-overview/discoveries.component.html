@@ -13,10 +13,11 @@
 </div>
 
 <p class="asterisk" *ngIf="isAnyDiscoveryUnPriced">
-    Si le prix d'une variante d'un produit n'est pas affiché, c'est qu'il n'était pas directement accessible avec le lien fourni
+    Si le prix d'un produit n'est pas affiché, cela signifie qu'il n'était pas affiché sur la page du produit principal.
+    Cela n'empêchera pas le suivi du produit.
 </p>
 
 <div class="actions">
-    <button [disabled]="!isAnyDiscoverySelected" class="primary">TRACKER</button>
+    <button (click)="trackDiscoveries()" [disabled]="!isAnyDiscoverySelected" class="primary">TRACKER</button>
     <button (click)="trackerService.ignore()">IGNORER</button>
 </div>

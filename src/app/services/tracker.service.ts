@@ -27,6 +27,7 @@ export class TrackerService {
     }
 
     track(dicoveries: ProductDiscovery[]): Observable<ProductDiscovery[]> {
+        console.log(dicoveries);
         return this.httpClient.post<ProductDiscovery[]>('http://localhost:3000/tracker/track', dicoveries)
     }
 

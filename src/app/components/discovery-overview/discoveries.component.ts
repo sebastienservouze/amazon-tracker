@@ -31,6 +31,13 @@ export class DiscoveriesComponent {
     constructor(public trackerService: TrackerService) {
     }
 
+    trackDiscoveries(): void {
+        const discoveriesToTrack = this._discoveries.filter((_, index) => this.discoveriesSelected[index]);
+        this.trackerService.track(discoveriesToTrack).subscribe(() => {
+            this.trackerService.ignore();
+        });
+    }
+
     get isAnyDiscoverySelected(): boolean {
         return this.discoveriesSelected.some(selected => selected);
     }
@@ -40,7 +47,6 @@ export class DiscoveriesComponent {
     }
 
     checkDiscoveryToTrack(index: number): void {
-        console.log('checkDiscoveryToTrack');
         this.discoveriesSelected[index] = !this.discoveriesSelected[index];
     }
 }
