@@ -61,10 +61,15 @@ input {
 }
 
 @keyframes spin {
-    to { -webkit-transform: rotate(360deg); }
+    to {
+        -webkit-transform: rotate(360deg);
+    }
 }
+
 @-webkit-keyframes spin {
-    to { -webkit-transform: rotate(360deg); }
+    to {
+        -webkit-transform: rotate(360deg);
+    }
 }
 
 button {
@@ -74,22 +79,42 @@ button {
     padding: .5rem 1rem;
     border: none;
     border-radius: .5rem;
-    cursor: pointer;
     transition: background-color .3s, color .3s;
 
     background-color: colors.$color-surface-a20;
     color: colors.$color-surface-a50;
 
-    &.primary {
-        background-color: colors.$color-primary-a20;
-        color: colors.$color-surface-a10;
+    &:not(:disabled) {
+        cursor: pointer;
 
         &:hover {
+            background-color: colors.$color-surface-a30;
+        }
+
+        &.primary:hover {
             background-color: colors.$color-primary-a50;
         }
     }
 
-    &:hover {
-        background-color: colors.$color-surface-a30;
+    &:disabled {
+        background-color: colors.$color-surface-a10;
+        color: colors.$color-surface-a30;
+    }
+
+    &.primary {
+        background-color: colors.$color-primary-a20;
+        color: colors.$color-surface-a10;
+
+        &:disabled {
+            background-color: colors.$color-surface-mixed-a40;
+        }
+    }
+}
+
+.asterisk {
+    font-size: .9rem;
+    &::before {
+        content: '*';
+        color: colors.$color-primary-a50;
     }
 }

@@ -1,36 +1,37 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Product} from "../models/Product.model";
 import {BehaviorSubject, Observable, of, tap} from "rxjs";
+import {ProductDiscovery} from "../models/ProductDiscovery.model";
+import {Mocks} from "../Mocks";
 
 @Injectable({
     providedIn: 'root'
 })
 export class TrackerService {
 
-    private searchedProduct$: BehaviorSubject<Product | null> = new BehaviorSubject<Product | null>(null);
-    get searchedProduct(): Observable<Product | null> {
-        return this.searchedProduct$.asObservable();
+    private discoveries$: BehaviorSubject<ProductDiscovery[]> = new BehaviorSubject<ProductDiscovery[]>(Mocks.discoveries);
+    get discoveries(): Observable<ProductDiscovery[]> {
+        return this.discoveries$.asObservable();
     }
 
     constructor(private httpClient: HttpClient) {
     }
 
-    scan(url: string): Observable<Product> {
-        return this.httpClient.get<Product>(`http://localhost:3000/tracker/scan?url=${url}`)
+    discover(url: string): Observable<ProductDiscovery[]> {
+        return this.httpClient.get<ProductDiscovery[]>(`http://localhost:3000/tracker/discover?url=${url}`)
                    .pipe(
-                       tap((product) => {
-                               this.searchedProduct$.next(product);
+                       tap((discoveries: ProductDiscovery[]) => {
+                               this.discoveries$.next(discoveries);
                            }
                        ));
     }
 
-    track(product: Product): void {
-        return;
+    track(dicoveries: ProductDiscovery[]): Observable<ProductDiscovery[]> {
+        return this.httpClient.post<ProductDiscovery[]>('http://localhost:3000/tracker/track', dicoveries)
     }
 
     ignore(): void {
-        this.searchedProduct$.next(null);
+        this.discoveries$.next([]);
     }
 
 }

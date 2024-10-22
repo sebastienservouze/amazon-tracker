@@ -1,4 +1,8 @@
+import {PriceChange} from "./PriceChange.model";
+
 export interface Product {
+    amazonId: string;
     name: string;
-    price: number;
+    url: string;
+    priceChanges: PriceChange[];
 }

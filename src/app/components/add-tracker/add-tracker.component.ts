@@ -1,6 +1,5 @@
-import {Component, ElementRef, EventEmitter, Output, ViewChild} from '@angular/core';
+import {Component, ElementRef, ViewChild} from '@angular/core';
 import {TrackerService} from "../../services/tracker.service";
-import {Product} from "../../models/Product.model";
 import {NgIf} from "@angular/common";
 import {filter} from "rxjs";
 
@@ -20,7 +19,7 @@ export class AddTrackerComponent {
     isDiscovering: boolean = false;
 
     constructor(private trackerService: TrackerService) {
-        this.trackerService.searchedProduct
+        this.trackerService.discoveries
             .pipe(
                 filter((product) => product === null)
             )
@@ -38,7 +37,7 @@ export class AddTrackerComponent {
 
     discover(url: string) {
         this.isDiscovering = true;
-        this.trackerService.scan(url).subscribe({
+        this.trackerService.discover(url).subscribe({
             complete: () => {
                 this.isDiscovering = false;
             }

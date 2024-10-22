@@ -4,8 +4,4 @@
 
 <app-add-tracker class="card"></app-add-tracker>
 
-<app-product-overview *ngIf="searchedProduct$ | async"
-                      [product]="searchedProduct$ | async"
-                      class="card">
-
-</app-product-overview>
+<app-discoveries *ngIf="(trackerService.discoveries | async)?.length" [discoveries]="(trackerService.discoveries | async )!" class="card"></app-discoveries>
