@@ -1,7 +1,6 @@
-import {Component, ElementRef, ViewChild} from '@angular/core';
-import {TrackerService} from "../../services/tracker.service";
+import {Component, ElementRef, EventEmitter, Input, Output, ViewChild} from '@angular/core';
 import {NgIf} from "@angular/common";
-import {filter} from "rxjs";
+import {Product} from "../../models/Product.model";
 
 @Component({
     selector: 'app-add-tracker',
@@ -14,33 +13,21 @@ import {filter} from "rxjs";
 })
 export class AddTrackerComponent {
 
-    @ViewChild('searchBar') searchBar!: ElementRef;
+    @ViewChild('searchBar') searchBar?: ElementRef;
 
-    isDiscovering: boolean = false;
-
-    constructor(private trackerService: TrackerService) {
-        this.trackerService.discoveries
-            .pipe(
-                filter((product) => product === null)
-            )
-            .subscribe(() => {
-                this.searchBar.nativeElement.value = '';
-            });
+    @Input() isDiscovering: boolean = false;
+    @Input() set product(product: Partial<Product> | undefined) {
+        if (this.searchBar) {
+            this.searchBar.nativeElement.value = '';
+        }
     }
+
+    @Output() urlPasted: EventEmitter<string> = new EventEmitter<string>();
 
     onPaste($event: ClipboardEvent) {
         let clipboardData = $event.clipboardData!;
         let pastedText = clipboardData.getData('text');
 
-        this.discover(pastedText);
-    }
-
-    discover(url: string) {
-        this.isDiscovering = true;
-        this.trackerService.discover(url).subscribe({
-            complete: () => {
-                this.isDiscovering = false;
-            }
-        });
+        this.urlPasted.emit(pastedText);
     }
 }

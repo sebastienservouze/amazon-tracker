@@ -8,5 +8,11 @@ export interface Product {
     amazonId: string;
     name: string;
     url: string;
+    price: number;
+    lowestPrice: number;
+    averagePrice: number;
+    highestPrice: number;
+    lastScan: string;
+    variants: Product[];
     priceChanges: PriceChange[];
 }

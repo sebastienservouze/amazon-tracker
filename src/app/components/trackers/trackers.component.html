@@ -2,6 +2,12 @@
     <h2><span class="material-symbols-outlined">insert_chart</span>Tracker</h2>
 </div>
 
-<app-add-tracker class="card"></app-add-tracker>
+<app-add-tracker [isDiscovering]="isDiscovering"
+                 [product]="product"
+                 (urlPasted)="onDiscover($event)"
+                 class="card" ></app-add-tracker>
 
-<app-discoveries *ngIf="(trackerService.discoveries | async)?.length" [discoveries]="(trackerService.discoveries | async )!" class="card"></app-discoveries>
+<app-discoveries *ngIf="product"
+                 [product]="product"
+                 (trackClicked)="onTrack($event)"
+                 class="card"></app-discoveries>

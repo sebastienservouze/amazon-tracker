@@ -22,7 +22,7 @@ export class ProductsComponent {
     products: Product[] = [];
 
     constructor(private productService: ProductService) {
-        this.productService.getProducts().subscribe((products: Page<Product>) => {
+        this.productService.get().subscribe((products: Page<Product>) => {
             this.products = products.data;
         });
     }

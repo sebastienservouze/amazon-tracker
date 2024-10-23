@@ -1,0 +1,18 @@
+<h3><span class="material-symbols-outlined">check_circle</span>Produit trouvé</h3>
+
+<p class="info-text" *ngIf="products.length > 1">
+    Sélectionnez les variantes que vous souhaitez suivre.
+</p>
+
+
+<div class="discoveries">
+    <p *ngFor="let product of products; let i = index" (click)="checkProductToTrack(i)" [class.selected]="productsSelected[i]">
+        <label><a target="_blank" (click)="$event.stopImmediatePropagation()" [href]="product.url" class="material-symbols-outlined">link</a>{{ product.name }}</label>
+        <label class="emphasis price"><b>{{ product.price ?? '---.--' }} €</b></label>
+    </p>
+</div>
+
+<div class="actions">
+    <button (click)="trackDiscoveries()" [disabled]="!isAnyProductSelected" class="primary">TRACKER</button>
+    <button (click)="ignoreClicked.emit()">IGNORER</button>
+</div>
