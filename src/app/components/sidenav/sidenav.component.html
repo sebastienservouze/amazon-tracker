@@ -5,19 +5,19 @@
 
 <nav>
     <ul>
-        <li><a routerLink="dashboard" routerLinkActive="active">&nbsp;<span class="material-symbols-outlined">dashboard</span>Dashboard</a></li>
+        <app-navlink [page]="Pages.DASHBOARD"></app-navlink>
 
         <hr>
 
-        <li><a routerLink="trackers" routerLinkActive="active">&nbsp;<span class="material-symbols-outlined">insert_chart</span>Tracker</a></li>
-        <li><a routerLink="products" routerLinkActive="active">&nbsp;<span class="material-symbols-outlined">package_2</span>Produits</a></li>
+        <app-navlink [page]="Pages.SCAN"></app-navlink>
+        <app-navlink [page]="Pages.TRACKERS"></app-navlink>
 
         <div class="footer">
             <hr>
 
             <ng-container *ngIf="authService.user$ | async">
-                <li><a class="profile" routerLink="profile">&nbsp;<span class="material-symbols-outlined">account_circle</span>{{(authService.user$ | async)?.username}}</a></li>
-                <li><a class="logout" routerLink="settings">&nbsp;<span class="material-symbols-outlined">logout</span> Déconnexion</a></li>
+                <app-navlink [page]="profilePage"></app-navlink>
+                <app-navlink class="logout" [page]="Pages.LOGOUT"></app-navlink>
             </ng-container>
 
             <ng-container *ngIf="!(authService.user$ | async)">

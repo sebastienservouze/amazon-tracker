@@ -1,0 +1,13 @@
+@use 'colors';
+
+.results {
+    display: flex;
+    gap: 1rem;
+}
+
+.actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    margin-left: auto;
+}

@@ -1,16 +1,5 @@
 @use 'colors';
 
-h3 {
-    display: flex;
-    gap: .5rem;
-    margin-bottom: 0;
-
-    span {
-        color: colors.$color-primary-a20;
-        font-size: 1.5rem;
-    }
-}
-
 p {
     display: flex;
     align-items: center;
@@ -23,7 +12,7 @@ p {
     &__spinner {
         position: absolute;
         right: .5rem;
-        top: calc(50% - 20px);
+        top: 50%;
 
         .spinner {
             width: 20px;
@@ -39,7 +28,6 @@ p {
 
         background-color: colors.$color-surface-a20;
         caret-color: colors.$color-primary-a50;
-        margin-bottom: 1rem;
 
         font-size: 1.25rem;
         color: white;

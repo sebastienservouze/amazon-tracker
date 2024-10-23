@@ -13,6 +13,6 @@ export interface Product {
     averagePrice: number;
     highestPrice: number;
     lastScan: string;
-    variants: Product[];
+    variants: Partial<Product>[];
     priceChanges: PriceChange[];
 }

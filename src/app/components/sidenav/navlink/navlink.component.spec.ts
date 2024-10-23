@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddTrackerComponent } from './add-tracker.component';
+import { NavlinkComponent } from './navlink.component';
 
-describe('AddTrackerComponent', () => {
-  let component: AddTrackerComponent;
-  let fixture: ComponentFixture<AddTrackerComponent>;
+describe('NavlinkComponent', () => {
+  let component: NavlinkComponent;
+  let fixture: ComponentFixture<NavlinkComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AddTrackerComponent]
+      imports: [NavlinkComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AddTrackerComponent);
+    fixture = TestBed.createComponent(NavlinkComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

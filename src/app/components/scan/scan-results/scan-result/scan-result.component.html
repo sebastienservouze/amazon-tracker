@@ -1,0 +1,5 @@
+<div class="container" [class.selected]="isSelected">
+    <a target="_blank" [href]="result.url" class="material-symbols-outlined">link</a>
+    <label>{{ result.name }}</label>
+    <label class="emphasis" *ngIf="result.price"><b>{{result.price}}€</b></label>
+</div>

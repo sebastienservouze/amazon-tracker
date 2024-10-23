@@ -1,0 +1,12 @@
+<app-page-title [page]="Pages.SCAN"></app-page-title>
+
+<app-scan-paste-link [isDiscovering]="isDiscovering"
+                     [product]="product"
+                     (urlPasted)="onScan($event)"
+                     class="card"></app-scan-paste-link>
+
+<app-create-tracker *ngIf="product"
+                    [variants]="product"
+                    (trackClicked)="onTrack($event)"
+                    (cancelClicked)="onCancel()"
+                    class="card"></app-create-tracker>

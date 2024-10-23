@@ -1,23 +1,23 @@
 import {Component, ElementRef, EventEmitter, Input, Output, ViewChild} from '@angular/core';
 import {NgIf} from "@angular/common";
-import {Product} from "../../models/Product.model";
+import {Product} from "../../../models/Product.model";
 
 @Component({
-    selector: 'app-add-tracker',
+    selector: 'app-scan-paste-link',
     standalone: true,
     imports: [
         NgIf
     ],
-    templateUrl: './add-tracker.component.html',
-    styleUrl: './add-tracker.component.scss'
+    templateUrl: './scan-paste-link.component.html',
+    styleUrl: './scan-paste-link.component.scss'
 })
-export class AddTrackerComponent {
+export class ScanPasteLinkComponent {
 
     @ViewChild('searchBar') searchBar?: ElementRef;
 
     @Input() isDiscovering: boolean = false;
     @Input() set product(product: Partial<Product> | undefined) {
-        if (this.searchBar) {
+        if (this.searchBar && !product) {
             this.searchBar.nativeElement.value = '';
         }
     }

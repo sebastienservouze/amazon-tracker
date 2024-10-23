@@ -1,0 +1,27 @@
+<h3><span class="material-symbols-outlined">verified</span>Création du tracker</h3>
+
+<p class="description">
+    Sélectionnez le produit <span class="emphasis">et / ou les variantes</span> de celui-ci que vous souhaitez tracker.
+</p>
+
+<h3>Produit principal</h3>
+
+<app-scan-result [result]="main"
+                 [isSelected]="productsSelected[0]"
+                 (click)="checkProductToTrack(0)">
+</app-scan-result>
+
+<h3>Variantes</h3>
+
+<div class="results" *ngIf="_variants">
+    <app-scan-result *ngFor="let product of _variants; let i = index"
+                     [result]="product"
+                     [isSelected]="productsSelected[i + 1]"
+                     (click)="checkProductToTrack(i + 1)">
+    </app-scan-result>
+</div>
+
+<div class="actions">
+    <button (click)="trackProducts()" [disabled]="!isAnyProductSelected" class="primary">TRACKER</button>
+    <button (click)="cancelClicked.emit()">ANNULER</button>
+</div>
