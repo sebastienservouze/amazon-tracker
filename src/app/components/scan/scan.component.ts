@@ -25,7 +25,7 @@ import {ToastService} from "../../services/toast.service";
 })
 export class ScanComponent {
 
-    product: Partial<Product> | undefined = Mocks.product;
+    product: Partial<Product> | undefined;
     isDiscovering: boolean = false;
 
     constructor(private productService: ProductService, private toastService: ToastService) {

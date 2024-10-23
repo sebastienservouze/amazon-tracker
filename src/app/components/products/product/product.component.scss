@@ -1,0 +1,30 @@
+@use 'colors';
+
+.header {
+    display: flex;
+    align-items: flex-start;
+    gap: .5rem;
+
+    a {
+        text-decoration: none;
+        display: block;
+        color: colors.$color-primary-a50;
+    }
+
+    h3 {
+        margin: 0;
+    }
+
+    .last-scan {
+        color: colors.$color-surface-a40;
+        font-size: 1rem;
+        margin-left: auto;
+    }
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+
+}

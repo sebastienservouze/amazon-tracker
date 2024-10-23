@@ -2,7 +2,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {JsonPipe, NgForOf, NgIf} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import {Product} from "../../../models/Product.model";
-import {ProductComponent} from "../../product/product.component";
+import {ProductComponent} from "../../products/product/product.component";
 import {ScanResultComponent} from "./scan-result/scan-result.component";
 
 @Component({
@@ -23,13 +23,15 @@ export class CreateTrackerComponent {
 
     main!: Partial<Product>;
     _variants: Partial<Product>[] = [];
+    allProducts: Partial<Product>[] = [];
     productsSelected: boolean[] = [];
 
     @Input()
     set variants(product: Partial<Product>) {
         this.main = product;
-        this._variants = product.variants!;
-        this.productsSelected = new Array(this._variants.length + 1).fill(false);
+        this._variants = product.variants || [];
+        this.allProducts = [product, ...this._variants];
+        this.productsSelected = new Array(this.allProducts.length).fill(false);
     }
 
     @Output() trackClicked: EventEmitter<Partial<Product>[]> = new EventEmitter<Partial<Product>[]>();
@@ -39,7 +41,7 @@ export class CreateTrackerComponent {
     }
 
     trackProducts(): void {
-        const productsToTrack = this._variants.filter((_, index) => this.productsSelected[index]);
+        const productsToTrack = this.allProducts.filter((_, index) => this.productsSelected[index]);
         this.trackClicked.emit(productsToTrack);
     }
 

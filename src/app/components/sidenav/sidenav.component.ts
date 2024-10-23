@@ -23,6 +23,7 @@ export class SidenavComponent {
     profilePage: Page = {
         label: 'User',
         icon: 'account_circle',
+        route: '/profile'
     }
 
     constructor(public authService: AuthService) {

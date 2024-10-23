@@ -1,17 +1,22 @@
 import {Component, Input} from '@angular/core';
-import {Product} from "../../models/Product.model";
+import {Product} from "../../../models/Product.model";
 import {DatePipe} from "@angular/common";
+import {TimeAgoPipe} from "../../../pipes/TimeAgo.pipe";
 
 @Component({
     selector: 'app-product',
     standalone: true,
     imports: [
-        DatePipe
+        DatePipe,
+        TimeAgoPipe
     ],
     templateUrl: './product.component.html',
     styleUrl: './product.component.scss'
 })
 export class ProductComponent {
 
-    @Input() product!: Product;
+    _product!: Product;
+    @Input() set product(product: Product) {
+        this._product = product;
+    }
 }
