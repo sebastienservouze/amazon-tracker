@@ -13,6 +13,7 @@ p {
         position: absolute;
         right: .5rem;
         top: 50%;
+        transform: translateY(-50%);
 
         .spinner {
             width: 20px;
@@ -39,7 +40,6 @@ p {
             font-family: "Outfit", sans-serif;
             font-weight: 400;
             color: colors.$color-surface-a40;
-            max-width: 90%;
         }
 
         &:hover, &:focus {

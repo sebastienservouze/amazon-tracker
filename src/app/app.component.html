@@ -5,3 +5,7 @@
         <router-outlet></router-outlet>
     </div>
 </div>
+
+<div class="toasts">
+    <app-toast *ngFor="let toast of toastService.toasts" [toast]="toast"></app-toast>
+</div>

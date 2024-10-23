@@ -1,0 +1,31 @@
+@use 'colors';
+
+.toast {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+
+    padding: 0 1rem;
+
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+    span {
+        cursor: pointer;
+
+        &.close {
+            margin-left: auto;
+        }
+    }
+
+    &--success {
+        background-color: colors.$color-success-a0;
+    }
+
+    &--error {
+        background-color: colors.$color-error-a0;
+    }
+}

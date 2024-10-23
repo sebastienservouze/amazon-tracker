@@ -35,16 +35,19 @@ export class CreateTrackerComponent {
     @Output() trackClicked: EventEmitter<Partial<Product>[]> = new EventEmitter<Partial<Product>[]>();
     @Output() cancelClicked: EventEmitter<void> = new EventEmitter<void>();
 
+    constructor() {
+    }
+
     trackProducts(): void {
         const productsToTrack = this._variants.filter((_, index) => this.productsSelected[index]);
         this.trackClicked.emit(productsToTrack);
     }
 
-    get isAnyProductSelected(): boolean {
-        return this.productsSelected.some(selected => selected);
-    }
-
     checkProductToTrack(index: number): void {
         this.productsSelected[index] = !this.productsSelected[index];
+    }
+
+    get isAnyProductSelected(): boolean {
+        return this.productsSelected.some(selected => selected);
     }
 }

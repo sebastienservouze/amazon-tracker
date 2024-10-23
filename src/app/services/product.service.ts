@@ -18,6 +18,12 @@ export class ProductService {
         });
     }
 
+    track(products: Partial<Product>[]): Observable<void> {
+        return this.httpClient.post<void>(`http://localhost:3000/products/track`, {
+            products
+        });
+    }
+
     get(page: number = 1, size: number = 50): Observable<Page<Product>> {
         return this.httpClient.get<Page<Product>>(`http://localhost:3000/products?page=${page}&pageSize=${size}`);
     }

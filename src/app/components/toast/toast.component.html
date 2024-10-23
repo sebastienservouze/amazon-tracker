@@ -1,0 +1,5 @@
+<div class="toast" [class.toast--success]="toast.type === 'success'" [class.toast--error]="toast.type === 'error'">
+    <span class="material-symbols-outlined">{{ toast.type === 'success' ? 'check_circle' : 'cancel' }}</span>
+    <p>{{ toast.message }}</p>
+    <span class="material-symbols-outlined close" (click)="close()">close</span>
+</div>
